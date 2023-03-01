@@ -11,6 +11,13 @@
     
   </head>
   <body>
+<div id="header">
+  <button type="button" class="btn btn-light" onclick="novaProposta()">Novo</button>
+
+
+</div>
+
+
     <div id="geral">
         <div id="titulo">
         <img src="./logo.png" alt="" srcset="">            
@@ -50,14 +57,11 @@
                 <td class="block">T.I </td>
                 <td><input Type="Text" id="ti"></input></td>
               </tr>
-              <!-- <tr>
-                <Th Colspan="6"></td>
-              </tr> -->
-              <tr>
+                        <tr>
                 <td class="block">Emissão</td>
-                <td><input Type="Text" id="emissao"></input></td>
+                <td><span id="emissao"></span></td>
                 <td class="block">Numero</td>
-                <td><input Type="Text" id="numero"></input></td>
+                <td><span id="numero"></span></td>
                 <td class="block">Solicitado Por</td>
                 <td><input Type="Text" id="solicitante"></input></td>
               </tr>
@@ -65,7 +69,7 @@
                 <td class="block">Sistema</td>
                 <td><input Type="Text" id="sistema"></input></td>
                 <td class="block" >Tef / Pos-Movel</td>
-                <td><input Type="Text" id="tefpos"></input></td>
+                <td><input Type="Text" id="tefpdvm"></input></td>
                 <td class="block">Bombas</td>
                 <td><input Type="Text" id="bombas"></input></td>
               </tr>
@@ -97,7 +101,7 @@
           <td colspan="2" class="block">Forma de pagamento</td>
             <td colspan="1"><Input Type="Text" oninput="total()" id="finalizadora"></td>
               <td colspan="2" class="block">Total dos serviços</td>
-              <td colspan="1"><Input Type="number" id="totalGeralProposta" ></td>
+              <td colspan="1"><Input Type="number" class="valores" id="totalGeralProposta" ></td>
                   </tr>  
 
           </table>
