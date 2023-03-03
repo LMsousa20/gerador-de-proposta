@@ -18,11 +18,12 @@ var hora = data.getHours();
 var min = data.getMinutes();
 let dataAtual = dia + " de " + monName[mes] + " de " + ano;
 let emissaoProposta = data.toLocaleDateString();
+let numero =''
 
 
 async function buscarCliente(){
   let getCpnj = document.getElementById('cnpj').value
-  const getClient = await fetch(`http://localhost:3001/users/${getCpnj}`)
+  const getClient = await fetch(`https://gpd-backend.onrender.com/users/${getCpnj}`)
    const client = await getClient.json()
    document.getElementById('cidade').value = client[0].cidade
    document.getElementById('razao').value = client[0].razao
@@ -30,14 +31,17 @@ async function buscarCliente(){
    document.getElementById('email').value = client[0].email
    document.getElementById('tefpdvm').value = client[0].tefpdvm
    document.getElementById('fantasia').value = client[0].fantasia
-   
    console.log(client[0])
-   alert('Console')
+   if(numero === ""){
+     novaProposta()
+    }   
+    console.log(nova)
+
 
 }
 
 function novaProposta() {
-  let numero =
+  numero =
     String(ano * 100 + mes) + String(dia) + String(hora) + String(min);
   console.log(numero);
   document.getElementById("data-da-proposta").innerText = dataAtual;
