@@ -1,12 +1,27 @@
+
 #header{
     border: 1px solid black;
     height: 60px;
     padding: 10px;
+    width: 100%;
     background-color: black;
+    display: grid;
+    place-content: center;
+    
+}
+#sub-header{
+    display: flex;
+    width: 824px;
 
 }
 
+#main{
+    display: grid;
+    place-content: center;
+}
+
 #geral{
+    
     width: 1024px;
     height: 1270px;
     display: flex;

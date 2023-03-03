@@ -11,13 +11,13 @@
     
   </head>
   <body>
-<div id="header">
+<div id="header"><div id="sub-header">
+  
   <button type="button" class="btn btn-light" onclick="novaProposta()">Novo</button>
-
-
+</div>
 </div>
 
-
+<div id="main">
     <div id="geral">
         <div id="titulo">
         <img src="./logo.png" alt="" srcset="">            
@@ -30,8 +30,8 @@
           </tr>
         </thead>
             <tr>
-                <td  class="block">Cnpj</td>
-                <td><input Type="Text" id="cnpj"></input></td>
+                <td  class="block" >Cnpj</td>
+                <td><input Type="Text" id="cnpj" oninput="buscarCliente()"></input></td>
                 <td class="block">Nome Fantasia</td>
                 <td><input Type="Text" id="fantasia"></input></td>
                 <td class="block">Cidade</td>
@@ -112,7 +112,7 @@
           </tr>
 
         </table>
-
+      </div>
     </div>
     <script src="script.js"></script>
   </body>

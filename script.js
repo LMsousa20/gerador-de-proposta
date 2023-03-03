@@ -19,6 +19,23 @@ var min = data.getMinutes();
 let dataAtual = dia + " de " + monName[mes] + " de " + ano;
 let emissaoProposta = data.toLocaleDateString();
 
+
+async function buscarCliente(){
+  let getCpnj = document.getElementById('cnpj').value
+  const getClient = await fetch(`http://localhost:3001/users/${getCpnj}`)
+   const client = await getClient.json()
+   document.getElementById('cidade').value = client[0].cidade
+   document.getElementById('razao').value = client[0].razao
+   document.getElementById('contato').value = client[0].contato
+   document.getElementById('email').value = client[0].email
+   document.getElementById('tefpdvm').value = client[0].tefpdvm
+   document.getElementById('fantasia').value = client[0].fantasia
+   
+   console.log(client[0])
+   alert('Console')
+
+}
+
 function novaProposta() {
   let numero =
     String(ano * 100 + mes) + String(dia) + String(hora) + String(min);
