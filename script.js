@@ -18,31 +18,38 @@ var hora = data.getHours();
 var min = data.getMinutes();
 let dataAtual = dia + " de " + monName[mes] + " de " + ano;
 let emissaoProposta = data.toLocaleDateString();
-let numero =''
+let numero = "";
+var product='';
 
+async function buscarCliente() {
+  let getCpnj = document.getElementById("cnpj").value;
+  const getClient = await fetch(`https://back-newgpd.onrender.com/client/${getCpnj}`);
+  const client = await getClient.json();
+  document.getElementById("cidade").value = client[0].cidade;
+  document.getElementById("razao").value = client[0].razao;
+  document.getElementById("contato").value = client[0].contato;
+  document.getElementById("email").value = client[0].email;
+  document.getElementById("tefpdvm").value = client[0].tefpdvm;
+  document.getElementById("fantasia").value = client[0].fantasia;
+  console.log(client[0]);
+  if (numero === "") {
+    novaProposta();
+  }
+  buscarProdutos();
+  
+}
 
-async function buscarCliente(){
-  let getCpnj = document.getElementById('cnpj').value
-  const getClient = await fetch(`https://gpd-backend.onrender.com/users/${getCpnj}`)
-   const client = await getClient.json()
-   document.getElementById('cidade').value = client[0].cidade
-   document.getElementById('razao').value = client[0].razao
-   document.getElementById('contato').value = client[0].contato
-   document.getElementById('email').value = client[0].email
-   document.getElementById('tefpdvm').value = client[0].tefpdvm
-   document.getElementById('fantasia').value = client[0].fantasia
-   console.log(client[0])
-   if(numero === ""){
-     novaProposta()
-    }   
-    console.log(nova)
+async function buscarProdutos() {
+  const getproduct = await fetch(`https://back-newgpd.onrender.com/product/`);
+  product = await getproduct.json();
+  
 
-
+  console.table(product);
+  gerandoListagem();
 }
 
 function novaProposta() {
-  numero =
-    String(ano * 100 + mes) + String(dia) + String(hora) + String(min);
+  numero = String(ano * 100 + mes) + String(dia) + String(hora) + String(min);
   console.log(numero);
   document.getElementById("data-da-proposta").innerText = dataAtual;
   document.getElementById("emissao").innerText = emissaoProposta;
@@ -52,17 +59,29 @@ function novaProposta() {
 console.log(dataAtual);
 let totalizando = 0;
 
-for (i = 1; i < 8; i++) {
-  document.getElementById("itens").innerHTML += `
+function gerandoListagem() {
+  var opt='<option select></option>';
+  product.forEach((element,idx) => {
+    opt += `
+  <option id="${element.id}" value="${element.valor}">${element.produto}</option>
+  `; }
+  );
+
+  for (i = 1; i < 8; i++) {
+    document.getElementById("itens").innerHTML += `
       <tr>
-      <td colspan="3"><Input Type="Text" id="Iten${i}" onchange='proximoInput(quantidadeIten${i})'></td>
-      <td><Input Type="number" class="valores" id="quantidadeIten${i}" onchange='proximoInput(precoIten${i})'></td>
+      <td colspan="3"> 
+      <select class="form-control" id="iten${i}" onchange='proximoInput(quantidadeIten${i},${i})'>
+      ${opt}
+      </select></td>
+      <td><Input Type="number" class="valores" id="quantidadeIten${i}" onchange='proximoInput(precoIten${i})' onfocus=""></td>
       <td><Input Type="number" class="valores" id="precoIten${i}" oninput="verificar(${i})" onchange='proximoInput(totalIten${i})'></td>
       <td><Input Type="number" class="valores" id="totalIten${i}" onchange='proximoInput(iten${
-    i + 1
-  })' disabled></td>
+      i + 1
+    })' disabled></td>
     </tr>    
       `;
+  }
 }
 
 var els = document.querySelectorAll("input");
@@ -104,6 +123,14 @@ function total() {
   totalGeralProposta.value = Number(totalGeral);
 }
 
-function proximoInput(destino) {
+function proximoInput(destino,act) {
+  if(!act){
   destino.focus();
+  } else {
+    const selectIten = document.getElementById(`iten${act}`).options.selectedIndex
+    destino.value = product[selectIten].valor
+    console.log(destino)
+    console.log(selectIten)   
+        destino.focus();
+  }
 }
