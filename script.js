@@ -20,9 +20,15 @@ let dataAtual = dia + " de " + monName[mes] + " de " + ano;
 let emissaoProposta = data.toLocaleDateString();
 let numero = "";
 var product='';
+document.getElementById('mensal').style.display = 'none'
 
 async function buscarCliente() {
   let getCpnj = document.getElementById("cnpj").value;
+console.log(getCpnj)
+console.log(getCpnj.length)
+
+
+  if(getCpnj.length >= 10){
   const getClient = await fetch(`https://back-newgpd.onrender.com/client/${getCpnj}`);
   const client = await getClient.json();
   document.getElementById("cidade").value = client[0].cidade;
@@ -36,17 +42,19 @@ async function buscarCliente() {
     novaProposta();
   }
   buscarProdutos();
+
+}
   
 }
 
 async function buscarProdutos() {
   const getproduct = await fetch(`https://back-newgpd.onrender.com/product/`);
   product = await getproduct.json();
-  
-
   console.table(product);
   gerandoListagem();
 }
+
+
 
 function novaProposta() {
   numero = String(ano * 100 + mes) + String(dia) + String(hora) + String(min);
@@ -61,27 +69,21 @@ let totalizando = 0;
 
 function gerandoListagem() {
   var opt='<option select></option>';
-  product.forEach((element,idx) => {
+  product.forEach((element) => {
     opt += `
-  <option id="${element.id}" value="${element.valor}">${element.produto}</option>
+        <option id="${element.id}" value="${element.valor}">${element.produto}</option>  
+      
   `; }
   );
 
-  for (i = 1; i < 8; i++) {
-    document.getElementById("itens").innerHTML += `
-      <tr>
-      <td colspan="3"> 
-      <select class="form-control" id="iten${i}" onchange='proximoInput(quantidadeIten${i},${i})'>
-      ${opt}
-      </select></td>
-      <td><Input Type="number" class="valores" id="quantidadeIten${i}" onchange='proximoInput(precoIten${i})' onfocus=""></td>
-      <td><Input Type="number" class="valores" id="precoIten${i}" oninput="verificar(${i})" onchange='proximoInput(totalIten${i})'></td>
-      <td><Input Type="number" class="valores" id="totalIten${i}" onchange='proximoInput(iten${
-      i + 1
-    })' disabled></td>
-    </tr>    
-      `;
+  for(var l = 1; l < 8; l++){
+    document.getElementById(`iten${l}`).innerHTML = `
+    <select class="form-control" id="itenSelect${l}" onchange='proximoInput(quantidadeIten${l},${l})'>
+    ${opt}    
+  </select>
+    `;
   }
+
 }
 
 var els = document.querySelectorAll("input");
@@ -127,10 +129,19 @@ function proximoInput(destino,act) {
   if(!act){
   destino.focus();
   } else {
-    const selectIten = document.getElementById(`iten${act}`).options.selectedIndex
-    destino.value = product[selectIten].valor
-    console.log(destino)
-    console.log(selectIten)   
-        destino.focus();
+    const selectIten = document.getElementById(`itenSelect${act}`).options.selectedIndex
+    console.log(product[selectIten-1].valor)
+    document.getElementById(`precoIten${act}`).value = product[selectIten-1].valor
+    
+    if (product[selectIten-1].e_servico){
+      console.log(product[selectIten-1].e_servico)
+      document.getElementById('mensal').style.display = ''
+      document.getElementById('mensalidade').value = `${product[selectIten-1].valor}`
+    } 
+    destino.focus();
   }
 }
+
+
+
+// buscarProdutos()

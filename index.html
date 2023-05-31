@@ -1,122 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gerador de Proposta - ACS Informática</title>
-    <link rel="icon" href="http://www.acssoft.com.br/wp-content/uploads/2022/04/favicon-150x150.jpg" sizes="32x32">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css" media="all"/>
-    
-  </head>
-  <body>
-<div id="header"><div id="sub-header">
-  
-  <button type="button" class="btn btn-light" onclick="novaProposta()">Novo</button>
-</div>
-</div>
 
-<div id="main">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gerador de Proposta - ACS Informática</title>
+  <link rel="icon" href="http://www.acssoft.com.br/wp-content/uploads/2022/04/favicon-150x150.jpg" sizes="32x32">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css" media="all" />
+
+</head>
+
+<body>
+  <div id="header">
+    <div id="sub-header">
+
+      <button type="button" class="btn btn-light" onclick="novaProposta()">Novo</button>
+    </div>
+  </div>
+
+  <div id="main">
     <div id="geral">
-        <div id="titulo">
-        <img src="./logo.png" alt="" srcset="">            
-        </div>
-        
+      <div id="titulo">
+        <img src="./logo.png" alt="" srcset="">
+      </div>
+
       <table id="tabela">
         <thead>
           <tr>
             <th colspan="6">IDENTIFICAÇÃO DO CLIENTE</th>
           </tr>
         </thead>
-            <tr>
-                <td  class="block" >Cnpj</td>
-                <td><input Type="Text" id="cnpj" oninput="buscarCliente()"></input></td>
-                <td class="block">Numero</td>
-                <td><span id="numero"></span></td>
-                <td class="block">Cidade</td>
-                <td><input Type="Text" id="cidade"></input></td>
-              </tr>
-              <tr>
-                <td class="block">Razão Social</td>
-                <td Colspan="5"><input Type="Text" id="razao"></input></td>
-              </tr>
-              <tr>
-                <td class="block">Contato</td>
-                <td><input Type="Text" id="contato"></input></td>
-                <td class="block">Telefone</td>
-                <td><input Type="Text" id="telefone"></input></td>
-                <td class="block">Email</td>
-                <td><input Type="Text" id="email"></input></td>
-              </tr>
-              <tr>
-                <td class="block">Bandeira</td>
-                <td><input Type="Text" id="bandeira"></input></td>
-                <td class="block">Celular</td>
-                <td><input Type="Text" id="celular"></input></td>
-                <td class="block">T.I </td>
-                <td><input Type="Text" id="ti"></input></td>
-              </tr>
-                        <tr>
-                <td class="block">Emissão</td>
-                <td><span id="emissao"></span></td>
-                <td class="block">Nome Fantasia</td>
-                <td><input Type="Text" id="fantasia"></input></td>
-           
-                <td class="block">Solicitado Por</td>
-                <td><input Type="Text" id="solicitante"></input></td>
-              </tr>
-              <tr>
-                <td class="block">Sistema</td>
-                <td><input Type="Text" id="sistema"></input></td>
-                <td class="block" >Tef / Pos-Movel</td>
-                <td><input Type="Text" id="tefpdvm"></input></td>
-                <td class="block">Bombas</td>
-                <td><input Type="Text" id="bombas"></input></td>
-              </tr>
-              <tr>
-                <td class="block">Concentrador</td>
-                <td><input Type="Text" id="concentrador"></input></td>
-                <td class="block">Identificador</td>
-                <td><input Type="Text" id="identificado"></input></td>
-                <td class="block">Wireless</td>
-                <td><input Type="Text" id="wireless"></input></td>
-              </tr>
-         
-    
-    
-          <tr>
-            <th colspan="6" >SERVIÇOS OU EQUIPAMENTOS </th>
-          </tr>
-<tbody id="itens">        
+        <tr>
+          <td class="block">Cnpj</td>
+          <td><input Type="Text" id="cnpj" onkeyup="buscarCliente()"></input></td>
+          <td class="block">Numero</td>
+          <td><span id="numero"></span></td>
+          <td class="block">Cidade</td>
+          <td><input Type="Text" id="cidade"></input></td>
+        </tr>
+        <tr>
+          <td class="block">Razão Social</td>
+          <td Colspan="5"><input Type="Text" id="razao"></input></td>
+        </tr>
+        <tr>
+          <td class="block">Contato</td>
+          <td><input Type="Text" id="contato"></input></td>
+          <td class="block">Telefone</td>
+          <td><input Type="Text" id="telefone"></input></td>
+          <td class="block">Email</td>
+          <td><input Type="Text" id="email"></input></td>
+        </tr>
+        <tr>
+          <td class="block">Bandeira</td>
+          <td><input Type="Text" id="bandeira"></input></td>
+          <td class="block">Celular</td>
+          <td><input Type="Text" id="celular"></input></td>
+          <td class="block">T.I </td>
+          <td><input Type="Text" id="ti"></input></td>
+        </tr>
+        <tr>
+          <td class="block">Emissão</td>
+          <td><span id="emissao"></span></td>
+          <td class="block">Nome Fantasia</td>
+          <td><input Type="Text" id="fantasia"></input></td>
+
+          <td class="block">Solicitado Por</td>
+          <td><input Type="Text" id="solicitante"></input></td>
+        </tr>
+        <tr>
+          <td class="block">Sistema</td>
+          <td><input Type="Text" id="sistema"></input></td>
+          <td class="block">Tef / Pos-Movel</td>
+          <td><input Type="Text" id="tefpdvm"></input></td>
+          <td class="block">Bombas</td>
+          <td><input Type="Text" id="bombas"></input></td>
+        </tr>
+        <tr>
+          <td class="block">Concentrador</td>
+          <td><input Type="Text" id="concentrador"></input></td>
+          <td class="block">Identificador</td>
+          <td><input Type="Text" id="identificado"></input></td>
+          <td class="block">Wireless</td>
+          <td><input Type="Text" id="wireless"></input></td>
+        </tr>
+
+
+
+        <tr>
+          <th colspan="6">SERVIÇOS OU EQUIPAMENTOS </th>
+        </tr>
+        <tbody id="itens">
           <tr>
             <td colspan="3" class="block">Equipamentos</td>
             <td class="block">Quantidade</td>
             <td class="block">Preco Unitario</td>
             <td class="block">Total a pagar</td>
           </tr>
-        
+          <tr>
+            <td colspan="3" class="opt" id="iten1">
+            </td>
+            <td><Input Type="number" class="valores" onkeyup="verificar(1)" id="quantidadeIten1" onchange='proximoInput(precoIten1)'
+                onfocus=""></td>
+            <td><Input Type="number" class="valores" id="precoIten1" 
+                onchange='proximoInput(totalIten1)'></td>
+            <td><Input Type="number" class="valores" id="totalIten1" onchange='proximoInput(iten2)' disabled></td>
+          </tr>
+          <tr>
+            <td colspan="3" class="opt" id="iten2">
+            </td>
+            <td><Input Type="number" class="valores" onkeyup="verificar(2)" id="quantidadeIten2" onchange='proximoInput(precoIten2)'
+                onfocus=""></td>
+            <td><Input Type="number" class="valores" id="precoIten2" 
+                onchange='proximoInput(totalIten2)'></td>
+            <td><Input Type="number" class="valores" id="totalIten2" onchange='proximoInput(iten3)' disabled></td>
+          </tr>
+          <tr>
+            <td colspan="3" class="opt" id="iten3">
+            </td>
+            <td><Input Type="number" class="valores" onkeyup="verificar(3)" id="quantidadeIten3" onchange='proximoInput(precoIten3)'
+                onfocus=""></td>
+            <td><Input Type="number" class="valores" id="precoIten3" 
+                onchange='proximoInput(totalIten3)'></td>
+            <td><Input Type="number" class="valores" id="totalIten3" onchange='proximoInput(iten4)' disabled></td>
+          </tr>
+          <tr>
+            <td colspan="3" class="opt" id="iten4">
+            </td>
+            <td><Input Type="number" class="valores" onkeyup="verificar(4)" id="quantidadeIten4" onchange='proximoInput(precoIten4)'
+                onfocus=""></td>
+            <td><Input Type="number" class="valores" id="precoIten4" 
+                onchange='proximoInput(totalIten4)'></td>
+            <td><Input Type="number" class="valores" id="totalIten4" onchange='proximoInput(iten5)' disabled></td>
+          </tr>
+          <tr>
+            <td colspan="3" class="opt" id="iten5">
+            </td>
+            <td><Input Type="number" class="valores" onkeyup="verificar(5)" id="quantidadeIten5" onchange='proximoInput(precoIten5)'
+                onfocus=""></td>
+            <td><Input Type="number" class="valores" id="precoIten5" 
+                onchange='proximoInput(totalIten5)'></td>
+            <td><Input Type="number" class="valores" id="totalIten5" onchange='proximoInput(iten6)' disabled></td>
+          </tr>
+          <tr>
+            <td colspan="3" class="opt" id="iten6">
+            </td>
+            <td><Input Type="number" class="valores" onkeyup="verificar(6)" id="quantidadeIten6" onchange='proximoInput(precoIten6)'
+                onfocus=""></td>
+            <td><Input Type="number" class="valores" id="precoIten6" 
+                onchange='proximoInput(totalIten6)'></td>
+            <td><Input Type="number" class="valores" id="totalIten6" onchange='proximoInput(iten7)' disabled></td>
+          </tr>
+          <tr>
+            <td colspan="3" class="opt" id="iten7">
+            </td>
+            <td><Input Type="number" class="valores" onkeyup="verificar(7)" id="quantidadeIten7" onchange='proximoInput(precoIten7)'
+                onfocus=""></td>
+            <td><Input Type="number" class="valores" id="precoIten7" 
+                onchange='proximoInput(totalIten7)'></td>
+            <td><Input Type="number" class="valores" id="totalIten7" onchange='proximoInput(finalizadora)' disabled></td>
+          </tr>
+
         </tbody>
+
+        
 
         <tr>
           <td colspan="2" class="block">Forma de pagamento</td>
-            <td colspan="1"><Input Type="Text" oninput="total()" id="finalizadora"></td>
-              <td colspan="2" class="block">Total dos serviços</td>
-              <td colspan="1"><Input Type="number" class="valores" id="totalGeralProposta" ></td>
-                  </tr>  
+          <td colspan="1"><Input Type="Text" oninput="total()" id="finalizadora"></td>
+          <td colspan="2" class="block">Total dos serviços</td>
+          <td colspan="1"><Input Type="number" class="valores" id="totalGeralProposta"></td>
+        </tr>
 
-          </table>
-          <table>
+        <tr id="mensal">
+          <td colspan="5" class="block">MENSALIDADE</td>
+          <td colspan="1"><Input Type="number" class="valores" id="mensalidade"></td>
+        </tr>
+
+      </table>
+      <table>
         <tr class="final">
-            <td colspan="3"><div class="final">Declaro ter lido o documento em anexo intitulado Proposta <br> ACS Informática – Especificações Comerciais.pdf, ter <br> compreendido e aceito os termos e condições nele <br> especificados. <br> Permaneceremos a disposição para prestar qualquer <br> esclarecimento que se faça necessário.</div></td>
-            <td colspan="3"><div class="final">Manifesto estar de acordo com os termos e condições da <br>presente proposta. <br> <br> Fortaleza, <span id="data-da-proposta"></span><br><br><br><br>________________________________ <br>Responsável pela Empresa <br>Assinatura e Carimbo</div></td>
-          </tr>
+          <td colspan="3">
+            <div class="final">Declaro ter lido o documento em anexo intitulado Proposta <br> ACS Informática –
+              Especificações Comerciais.pdf, ter <br> compreendido e aceito os termos e condições nele <br>
+              especificados. <br> Permaneceremos a disposição para prestar qualquer <br> esclarecimento que se faça
+              necessário.</div>
+          </td>
+          <td colspan="3">
+            <div class="final">Manifesto estar de acordo com os termos e condições da <br>presente proposta. <br> <br>
+              Fortaleza, <span id="data-da-proposta"></span><br><br><br><br>________________________________
+              <br>Responsável pela Empresa <br>Assinatura e Carimbo</div>
+          </td>
+        </tr>
 
-        </table>
-      </div>
+      </table>
     </div>
+  </div>
 
-  
-    <script src="script.js"></script>
-  </body>
+
+  <script src="script.js"></script>
+</body>
+
 </html>
