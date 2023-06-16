@@ -19,7 +19,7 @@ async function buscarProdutos() {
   console.log(product)
   listar();
 
-  const gettecnicos = await fetch(`http://localhost:3000/tecnicos/`);
+  const gettecnicos = await fetch(`https://back-newgpd.onrender.com/tecnicos/`);
   resposta = await gettecnicos.json();
   tecnicos = resposta;
   console.table(tecnicos);
@@ -104,7 +104,7 @@ async function agendar(fantasy){
     };
   
     let enviando = await fetch(
-      "http://localhost:3000/ticket",
+      "https://back-newgpd.onrender.com/ticket",
       enviar
     );
     console.log("no aguardo do retorno");

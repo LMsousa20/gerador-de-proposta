@@ -1,7 +1,7 @@
 let product = "";
 
 async function buscarProdutos() {
-  const getproduct = await fetch(`http://localhost:3000/ticket/`);
+  const getproduct = await fetch(`https://back-newgpd.onrender.com/ticket/`);
   resposta = await getproduct.json();
   product = resposta;
   console.table(resposta);
@@ -53,7 +53,7 @@ function listar() {
 //   };
 
 //   let enviando = await fetch(
-//     "http://localhost:3000/tecnicos/",
+//     "https://back-newgpd.onrender.com/tecnicos/",
 //     enviar
 //   );
 //   console.log("no aguardo do retorno");
@@ -72,7 +72,7 @@ function listar() {
 //   };
 
 //   let enviando = await fetch(
-//     "http://localhost:3000/tecnicos/",
+//     "https://back-newgpd.onrender.com/tecnicos/",
 //     enviar
 //   );
 //   console.log("no aguardo do retorno");
@@ -121,7 +121,7 @@ function listar() {
 //   };
 
 //   let enviando = await fetch(
-//     "http://localhost:3000/tecnicos/",
+//     "https://back-newgpd.onrender.com/tecnicos/",
 //     enviar
 //   );
 //   document.getElementById("idSelectEdit").style.display = "none";

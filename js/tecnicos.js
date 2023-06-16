@@ -5,7 +5,7 @@ document.getElementById("idSelectEdit").style.display = "none";
 
 
 async function buscarProdutos() {
-  const getproduct = await fetch(`http://localhost:3000/tecnicos/`);
+  const getproduct = await fetch(`https://back-newgpd.onrender.com/tecnicos/`);
   resposta = await getproduct.json();
   product = resposta;
   console.table(resposta);
@@ -55,7 +55,7 @@ async function post() {
   };
 
   let enviando = await fetch(
-    "http://localhost:3000/tecnicos/",
+    "https://back-newgpd.onrender.com/tecnicos/",
     enviar
   );
   console.log("no aguardo do retorno");
@@ -74,7 +74,7 @@ async function deleteSelect(id) {
   };
 
   let enviando = await fetch(
-    "http://localhost:3000/tecnicos/",
+    "https://back-newgpd.onrender.com/tecnicos/",
     enviar
   );
   console.log("no aguardo do retorno");
@@ -123,7 +123,7 @@ async function upSelect(id) {
   };
 
   let enviando = await fetch(
-    "http://localhost:3000/tecnicos/",
+    "https://back-newgpd.onrender.com/tecnicos/",
     enviar
   );
   document.getElementById("idSelectEdit").style.display = "none";
